@@ -16,7 +16,7 @@ const StyledButton = styled.button<{ outline: boolean | undefined }>`
   margin-left: 0.75em;
   display: block;
   font: inherit;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 700;
   background: var(--cl-primary);
   color: white;

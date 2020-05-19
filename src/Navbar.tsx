@@ -9,7 +9,6 @@ const StyledNavbar = styled.nav`
   align-self: center;
   width: 90%;
   max-width: 1400px;
-  height: 5em;
   margin: 2em auto var(--y-spacer);
   display: flex;
   flex-wrap: wrap;
@@ -18,12 +17,19 @@ const StyledNavbar = styled.nav`
 
   ul {
     min-width: 60%;
+    height: 5rem;
     display: block;
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex: 1 1 auto;
     li {
+      width: 100%;
+      height: 100%;
+      padding: 0.5em 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       cursor: pointer;
       transition: all 200ms ease-in-out;
       font-size: 1.2rem;
