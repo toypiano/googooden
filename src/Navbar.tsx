@@ -7,21 +7,24 @@ const StyledNavbar = styled.nav`
   z-index: 100;
   background: rgba(255, 255, 255, 0.95);
   align-self: center;
-  width: 100vw;
-  height: 8rem;
-  padding: 1.5em 0;
+  width: 90%;
+  max-width: 1400px;
+  height: 5em;
+  margin: 2em auto var(--y-spacer);
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+
   ul {
+    min-width: 60%;
     display: block;
-    width: 700px;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    flex: 1 1 auto;
     li {
       cursor: pointer;
-      margin: 0 1em;
       transition: all 200ms ease-in-out;
       font-size: 1.2rem;
       font-weight: 700;
@@ -33,6 +36,11 @@ const StyledNavbar = styled.nav`
         font-size: 2rem;
       }
     }
+  }
+  .nav-buttons {
+    display: flex;
+    justify-content: center;
+    margin: 0.5em 1rem;
   }
 `;
 
@@ -57,10 +65,12 @@ function Navbar(props: Props) {
           </li>
         ))}
       </ul>
-      <Button handleClick={props.handleScrambleClick}>섞어주세요!</Button>
-      <Button outline={true} handleClick={props.handleResetOrderClick}>
-        원래대로
-      </Button>
+      <div className="nav-buttons">
+        <Button handleClick={props.handleScrambleClick}>섞어주세요!</Button>
+        <Button outline={true} handleClick={props.handleResetOrderClick}>
+          원래대로
+        </Button>
+      </div>
     </StyledNavbar>
   );
 }

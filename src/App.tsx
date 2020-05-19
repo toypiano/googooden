@@ -7,23 +7,13 @@ import Navbar from './Navbar';
 // import { TimesItem, initialTimesItems } from './models/TimesItem';
 // import { useImmer } from './hooks/useImmer';
 
-const initialGridAreas = [
-  'one',
-  'two',
-  'three',
-  'four',
-  'five',
-  'six',
-  'seven',
-  'eight',
-  'nine',
-];
+const initialFactors = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 function App() {
   // TODO - connect to firebase
   // const [timesItems, setTimesItems] = useImmer(initialTimesItems);
 
-  const [gridAreas, setGridAreas] = useState(initialGridAreas);
+  const [factors, setFactors] = useState(initialFactors);
   const [stage, setStage] = useState(2);
 
   const selectStage = (stage: number) => {
@@ -31,11 +21,11 @@ function App() {
   };
 
   const scramble = () => {
-    setGridAreas((prev) => shuffle(prev));
+    setFactors((prev) => shuffle(prev));
   };
 
   const resetOrder = () => {
-    setGridAreas(initialGridAreas);
+    setFactors(initialFactors);
   };
 
   useEffect(() => {});
@@ -59,7 +49,7 @@ function App() {
           </span>
         </h1>
       </header>
-      <TimesTable gridAreas={gridAreas} stage={stage} />
+      <TimesTable factors={factors} stage={stage} />
     </div>
   );
 }

@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-const StyledTimesItem = styled.li<{ isPeeking: boolean; gridArea: string }>`
-  grid-area: ${(props) => props.gridArea};
+const StyledTimesItem = styled.li<{ isPeeking: boolean }>`
   font-size: 3rem;
-  margin-bottom: 0.5em;
+
   text-align: right;
-  justify-self: center;
   display: flex;
   align-items: center;
   .question {
@@ -15,6 +13,7 @@ const StyledTimesItem = styled.li<{ isPeeking: boolean; gridArea: string }>`
     text-align: left;
   }
   .answer {
+    cursor: pointer;
     --size: 5rem;
     display: inline-block;
     width: var(--size);
@@ -44,7 +43,6 @@ const StyledTimesItem = styled.li<{ isPeeking: boolean; gridArea: string }>`
 `;
 
 type Props = {
-  gridArea: string;
   stage: number;
   factor: number;
 };
@@ -59,7 +57,7 @@ function TimesItem(props: Props) {
   };
 
   return (
-    <StyledTimesItem isPeeking={isPeeking} gridArea={props.gridArea}>
+    <StyledTimesItem isPeeking={isPeeking}>
       <div className="question">
         {props.stage} <span className="times">X</span> {props.factor} ={' '}
       </div>
