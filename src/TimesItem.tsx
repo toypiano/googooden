@@ -15,6 +15,7 @@ const StyledTimesItem = styled.li<{ isPeeking: boolean }>`
   .answer {
     cursor: pointer;
     --size: 5rem;
+    font: inherit;
     display: inline-block;
     width: var(--size);
     height: var(--size);
@@ -22,8 +23,9 @@ const StyledTimesItem = styled.li<{ isPeeking: boolean }>`
     text-align: center;
     &::before {
       content: '?';
-      display: grid;
-      place-items: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       position: absolute;
       background: var(--cl-primary);
       top: 0;
@@ -32,10 +34,19 @@ const StyledTimesItem = styled.li<{ isPeeking: boolean }>`
       right: 0;
       color: white;
       animation: ${(props) =>
-        props.isPeeking ? 'show-answer 1s linear' : null};
+        props.isPeeking ? 'show-answer 0.8s ease-out' : null};
       @keyframes show-answer {
         100% {
+          opacity: 1;
           transform: rotate3d(0, 1, 0, 360deg);
+        }
+      }
+      /* for iPhone7 */
+      @supports not (transform: rotate3d(0, 1, 0, 360deg)) {
+        @keyframes show-answer {
+          50% {
+            opacity: 0.4;
+          }
         }
       }
     }
@@ -61,13 +72,13 @@ function TimesItem(props: Props) {
       <div className="question">
         {props.stage} <span className="times">X</span> {props.factor} ={' '}
       </div>
-      <span
+      <button
         className="answer"
         onClick={handlePeekClick}
         onAnimationEnd={handleAnswerAnimationEnd}
       >
         {props.stage * props.factor}
-      </span>
+      </button>
     </StyledTimesItem>
   );
 }
