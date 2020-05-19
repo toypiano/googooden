@@ -31,15 +31,22 @@ const StyledNavbar = styled.nav`
       justify-content: center;
       align-items: center;
       cursor: pointer;
-      transition: all 200ms ease-in-out;
       font-size: 1.2rem;
       font-weight: 700;
-      opacity: 0.5;
+      button {
+        font: inherit;
+        border: none;
+        background: transparent;
+        opacity: 0.6;
+        transition: all 200ms ease-in-out;
+      }
       &.active {
-        color: var(--cl-primary);
-        font-weight: 900;
-        opacity: 1;
-        font-size: 2rem;
+        button {
+          color: var(--cl-primary);
+          font-weight: 900;
+          opacity: 1;
+          font-size: 2rem;
+        }
       }
     }
   }
@@ -67,7 +74,7 @@ function Navbar(props: Props) {
             className={`${i + 2 === props.stage ? 'active' : null}`}
             onClick={props.handleStageClick.bind(null, i + 2)}
           >
-            {i + 2} 단
+            <button>{i + 2} 단</button>
           </li>
         ))}
       </ul>

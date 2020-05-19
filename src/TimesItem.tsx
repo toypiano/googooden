@@ -12,8 +12,11 @@ const StyledTimesItem = styled.li<{ isPeeking: boolean }>`
     width: 10.5rem;
     text-align: left;
   }
+  /* TODO - improve button design? (fix default background?) */
   .answer {
     cursor: pointer;
+    border: none;
+    background: var(--cl-light);
     --size: 5rem;
     font: inherit;
     display: inline-block;
