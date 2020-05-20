@@ -42,7 +42,7 @@ const StyledNavbar = styled.nav`
         /* accessible focus styling for nav-link button */
         &:focus {
           outline: none;
-          border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+          border-bottom: 1px solid rgba(0, 0, 0, 0.3);
         }
       }
       &.active {
