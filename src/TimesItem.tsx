@@ -37,7 +37,7 @@ const StyledTimesItem = styled.li<{ isPeeking: boolean }>`
       color: white;
       animation: ${(props) =>
         props.isPeeking
-          ? 'show-answer 0.8s cubic-bezier(.15,.77,.28,.85)'
+          ? 'show-answer 1s cubic-bezier(.07,.88,.21,1.01)'
           : null};
       @keyframes show-answer {
         0% {
