@@ -19,7 +19,9 @@ const StyledTimesItem = styled.li<{ isPeeking: boolean }>`
     background: var(--cl-light);
     --size: 5rem;
     font: inherit;
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: var(--size);
     height: var(--size);
     position: relative;
@@ -36,9 +38,7 @@ const StyledTimesItem = styled.li<{ isPeeking: boolean }>`
       right: 0;
       color: white;
       animation: ${(props) =>
-        props.isPeeking
-          ? 'show-answer 1s cubic-bezier(.07,.88,.21,1.01)'
-          : null};
+        props.isPeeking ? 'show-answer 1s ease-out' : null};
       @keyframes show-answer {
         0% {
           opacity: 0;
@@ -46,7 +46,7 @@ const StyledTimesItem = styled.li<{ isPeeking: boolean }>`
         100% {
           opacity: 1;
           /* reported bug in some iOS where multiple of 90 degrees rotations are ignored */
-          transform: rotate3d(0, 1, 0, 359.9deg);
+          transform: rotate3d(0, 1, 0, -720deg);
         }
       }
     }
