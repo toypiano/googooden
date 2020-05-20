@@ -39,6 +39,11 @@ const StyledNavbar = styled.nav`
         background: transparent;
         opacity: 0.6;
         transition: all 200ms ease-in-out;
+        /* accessible focus styling for nav-link button */
+        &:focus {
+          outline: none;
+          border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+        }
       }
       &.active {
         button {
@@ -46,6 +51,11 @@ const StyledNavbar = styled.nav`
           font-weight: 900;
           opacity: 1;
           font-size: 2rem;
+          /* remove focus style since selected link already has a visual cue */
+          border-bottom: none;
+          &:not(:focus) {
+            opacity: 0.8;
+          }
         }
       }
     }
