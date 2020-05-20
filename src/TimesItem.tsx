@@ -24,8 +24,7 @@ const StyledTimesItem = styled.li<{ isPeeking: boolean }>`
     height: var(--size);
     position: relative;
     text-align: center;
-    &::before {
-      content: '?';
+    .cover {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -37,19 +36,17 @@ const StyledTimesItem = styled.li<{ isPeeking: boolean }>`
       right: 0;
       color: white;
       animation: ${(props) =>
-        props.isPeeking ? 'show-answer 0.8s ease-out' : null};
+        props.isPeeking
+          ? 'show-answer 0.8s cubic-bezier(.15,.77,.28,.85)'
+          : null};
       @keyframes show-answer {
+        0% {
+          opacity: 0;
+        }
         100% {
           opacity: 1;
-          transform: rotate3d(0, 1, 0, 360deg);
-        }
-      }
-      /* for iPhone7 */
-      @supports not (transform: rotate3d(0, 1, 0, 360deg)) {
-        @keyframes show-answer {
-          50% {
-            opacity: 0.4;
-          }
+          /* reported bug in some iOS where multiple of 90 degrees rotations are ignored */
+          transform: rotate3d(0, 1, 0, 359.9deg);
         }
       }
     }
@@ -81,6 +78,7 @@ function TimesItem(props: Props) {
         onAnimationEnd={handleAnswerAnimationEnd}
       >
         {props.stage * props.factor}
+        <span className="cover">?</span>
       </button>
     </StyledTimesItem>
   );
